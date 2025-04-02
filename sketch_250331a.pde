@@ -2,8 +2,8 @@
 //March 31, 2025
 //2-3
 
-color green =     #D8E2DC;
-color beige =     #FFE5D9;
+color yellow =    #fefae0;
+color brown =     #d4a373;
 color lightpink = #FFCAD4;
 color darkpink =  #F4ACB7;
 color brown =     #9D8189;
@@ -43,6 +43,7 @@ void chimney() {
 
 
 void roof() {
+  fill(brown);
   triangle(40, 150, 190, 20, 340, 150);
   line(75, 120, 305, 120);
   line(110, 90, 270, 90);
@@ -52,6 +53,7 @@ void roof() {
 }
 
 void base() {
+  fill(lightpink);
   rect(40, 150, 300, 220);
   
   
@@ -59,6 +61,7 @@ void base() {
 
 
 void window1() {
+  fill(yellow);
   rect(80, 200, 60, 60);
   line(110, 200, 110, 260);
   line(80, 230, 140, 230);
