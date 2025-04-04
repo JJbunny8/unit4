@@ -2,41 +2,51 @@
 //March 31, 2025
 //2-3
 
-color yellow =    #fefae0;
-color brown =     #9d8189;
+//Global Variables
+color yellow =    #FEFAE0;
+color brown =     #9D8189;
 color red =       #F892A1;
 color pink =      #FCD5DC;
 color blue =      #CDEBF5;
 color lightblue = #EFF3FA;
 
+
 void setup() {
   size(800, 600);
+  background(255); 
+  house(random(100, 500), random(100,500), random(0.25,1)); //x, y, scale factor
 }
 
 void draw() {
-  background(255);
-  house(200, 100); //x, y 
-  //house(500, -200);
+
 }
 
-void house(int x, int y) {
+void house(float x, float y, float s) {
   pushMatrix();
   translate(x, y);
+  //rotate(PI);
+  scale(s);
   
-  chimney();
+  float h;
+  h = random(10, 200);
+  chimney(h);
   roof();
   base();
-  window1();
-  window2();
+  float r, g, b;
+  r = random(0,255);
+  g = random(0,255);
+  b = random(0,255);
+  window(80, 200, r, g, b); //left
+  window(240, 200, r, g, b); // right
   door();
   
   popMatrix();
 }
 
-void chimney() {
+void chimney(float h) {
   strokeWeight(1);
   fill(lightblue);
-  ellipse(360, -40, 30, 25);
+  ellipse(360, -40, h, h);
   ellipse(340, -20, 40, 35);
   ellipse(320, -10, 50, 45);
   ellipse(310, 10, 60, 55);
@@ -60,18 +70,11 @@ void base() {
 }
 
 
-void window1() {
-  fill(blue);
-  rect(80, 200, 60, 60);
-  line(110, 200, 110, 260);
-  line(80, 230, 140, 230);
-}
-
-
-void window2() {
-  rect(240, 200, 60, 60);
-  line(270, 200, 270, 260);
-  line(240, 230, 300, 230); 
+void window(float x, float y, float r, float g, float b) {
+  fill(r, g, b);
+  rect(x, y, 60, 60);
+  line(x + 30, y, x + 30, y + 60);
+  line(x, y + 30, x + 60, y + 30);
 }
 
 void door() {
