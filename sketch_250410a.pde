@@ -17,10 +17,11 @@ void setup() {
   size(800, 600);
   background(255);
   strokeWeight(2);
-  cherryblossom(100, 100);
+  //cherryblossom(100, 100);
   cherryblossom(300, 100);
   cherryblossom(500, 100);
   cherryblossom(700, 100);
+  building();
 }
 
 void cherryblossom(float x, float y) {
@@ -45,7 +46,6 @@ void trunk() {
   triangle(100, 310, 110, 260, 120, 310);
   triangle(120, 330, 155, 290, 120, 310);
   rect(100, 310, 20, 65);
-
 }
 
 void blossom(float x, float y) {
@@ -60,4 +60,19 @@ void blossom(float x, float y) {
   circle(x, y+35, 10);
   circle(x-15, y+35, 10);
   circle(x+15, y+35, 12);
+}
+
+int x = 0;
+int y = 0;
+
+void building () {
+  rect(0, 0, 200, 300);
+  while(y < 300) {
+  rect(x, 0, 40, 20); 
+  x = x + 40;
+    if(x >= 200) {
+      x = 0; 
+      y = y + 20;
+    }
+  }
 }
