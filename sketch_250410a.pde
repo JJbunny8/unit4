@@ -6,22 +6,25 @@
 color yellow =    #FEFAE0;
 color darkbrown = #4C3F43;
 color brown =     #9D8189;
-color red =       #F892A1;
+color teal =      #90e0ef;
+color red =       #791202;
 color darkpink =  #ffafcc;
 color pink =      #FCD5DC;
 color blue =      #CDEBF5;
 color lightblue = #EFF3FA;
+color darkblue =  #023e8a;
 
 
 void setup() {
   size(800, 600);
   background(255);
-  strokeWeight(2);
+  strokeWeight(1);
   //cherryblossom(100, 100);
   cherryblossom(300, 100);
   cherryblossom(500, 100);
   cherryblossom(700, 100);
-  building();
+  building(0, 0);
+  door(60, 280);
 }
 
 void cherryblossom(float x, float y) {
@@ -62,17 +65,30 @@ void blossom(float x, float y) {
   circle(x+15, y+35, 12);
 }
 
-int x = 0;
-int y = 0;
 
-void building () {
-  rect(0, 0, 200, 300);
-  while(y < 300) {
-  rect(x, 0, 40, 20); 
-  x = x + 40;
-    if(x >= 200) {
-      x = 0; 
-      y = y + 20;
-    }
-  }
+void building (float x, float y) {
+  int x1 = 50;
+  int y1 = 50;
+  fill(blue);
+  stroke(darkblue);
+  rect(x, y, 210, 350);
+  //while(y1 < 340) {
+  fill(teal);
+  rect(x1, y1, 30, 30); 
+  line(x1 + 5, y1 + 15, x1 + 15, y1 +5);
+  line(x1 + 10, y1 + 25, x1 + 25, y1 +10);
+  //x1 = x1 + 40;
+    //if(x1 > 200) {
+     // x1 = 10; 
+      //y1 = y1 + 50;
+    //}
+  //}
+}
+
+void door (float x, float y) {
+  rect(x, y, 40, 70);
+  rect(x + 40, y, 40, 70);
+  circle(x + 25, y + 45, 10);
+  circle(x + 55, y + 45, 10);
+  
 }
