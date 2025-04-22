@@ -19,6 +19,9 @@ color green =     #B6FFC1;
 
 void setup() {
   size(800, 600);
+  stroke(green);
+  fill(green);
+  ellipse(-50, 500, 1000, 400);
   
   int y = 0;
 
@@ -31,16 +34,19 @@ while(y <= 400) {
   
 }
 
-fill(green);
+//fill(green);
 
-rect(0, 400, 800, 400);
+//rect(0, 400, 800, 400);
+
 
   strokeWeight(1);
+  scale(0.75);
+  skyscraper(600, 150);
+  scale(1.25);
   //cherryblossom(100, 100);
   cherryblossom(300, 100);
   cherryblossom(500, 100);
   cherryblossom(700, 100);
-  skyscraper(100, 100);
 }
 
 void cherryblossom(float x, float y) {
@@ -63,7 +69,7 @@ void skyscraper (float x, float y) {
   
   translate(x, y);  
   building(0, 0);
-  door(60, 280);
+  door(85, 330);
   
   popMatrix();
 }
@@ -94,19 +100,19 @@ void blossom(float x, float y) {
 
 void building (float x, float y) {
   int x1 = 10;
-  int y1 = 10;
+  int y1 = 15;
   fill(blue);
   stroke(darkblue);
-  rect(x, y, 210, 350);
-  while(y1 < 340) {
+  rect(x, y, 250, 400);
+  while(y1 < 350) {
   fill(teal);
   rect(x1, y1, 30, 30); 
   line(x1 + 5, y1 + 15, x1 + 15, y1 +5);
   line(x1 + 10, y1 + 25, x1 + 25, y1 +10);
   x1 = x1 + 40;
-    if(x1 > 200) {
+    if(x1 > 210) {
      x1 = 10; 
-      y1 = y1 + 50;
+      y1 = y1 + 47;
     }
   }
 }
@@ -116,5 +122,4 @@ void door (float x, float y) {
   rect(x + 40, y, 40, 70);
   circle(x + 25, y + 45, 10);
   circle(x + 55, y + 45, 10);
-  
 }
