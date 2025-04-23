@@ -34,16 +34,24 @@ while(y <= 400) {
   
 }
 
-//fill(green);
-
-//rect(0, 400, 800, 400);
-
-
+int xs, ys;
+  xs = 0;
+  ys = 110;
+ 
+  while(ys < 300) {
+    skyscraper(xs, ys, 0.8);
+    xs = xs + 320;
+    if (xs >= 750) {
+       xs = 210;
+       ys = ys + 100;
+       //while(ys < 200) {
+       skyscraper(xs, ys, 0.7);
+       xs = xs + 100;
+    }
+ //}
+}
   strokeWeight(1);
-  scale(0.75);
-  skyscraper(600, 150);
-  scale(1.25);
-  //cherryblossom(100, 100);
+  cherryblossom(100, 100);
   cherryblossom(300, 100);
   cherryblossom(500, 100);
   cherryblossom(700, 100);
@@ -64,8 +72,9 @@ void cherryblossom(float x, float y) {
   popMatrix();
 }
 
-void skyscraper (float x, float y) {
+void skyscraper (float x, float y, float s) {
   pushMatrix();
+  scale(s);
   
   translate(x, y);  
   building(0, 0);
@@ -122,4 +131,9 @@ void door (float x, float y) {
   rect(x + 40, y, 40, 70);
   circle(x + 25, y + 45, 10);
   circle(x + 55, y + 45, 10);
+}
+
+void bunny () {
+  ellipse(100, 600, 50, 20);
+  
 }
