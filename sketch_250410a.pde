@@ -19,42 +19,51 @@ color green =     #B6FFC1;
 
 void setup() {
   size(800, 600);
+  background(100);
   stroke(green);
   fill(green);
-  ellipse(-50, 500, 1000, 400);
+  ellipse(-50, 500, 1200, 600);
   
   int y = 0;
 
-while(y <= 400) {
+while(y <= 300) {
   float percent = map(y, 0, 400, 0, 1);
   color current = lerpColor(skyblue, white, percent);
   stroke(current);
   line(0, y, 800, y); 
   y = y + 1;
-  
 }
+pushMatrix();
 
 int xs, ys;
-  xs = 0;
-  ys = 110;
+  xs = 350;
+  ys = 70;
+  
+  float s;
+  s = 0.65;
+  scale(s);
  
   while(ys < 300) {
-    skyscraper(xs, ys, 0.8);
-    xs = xs + 320;
-    if (xs >= 750) {
-       xs = 210;
-       ys = ys + 100;
-       //while(ys < 200) {
-       skyscraper(xs, ys, 0.7);
-       xs = xs + 100;
+    skyscraper(xs, ys);
+    xs = xs + 300;
+    if (xs >= 1000) {
+       s = 0.55;
+       xs = 550;
+       ys = ys + 150;
     }
- //}
 }
+
+popMatrix();
+  scale(0.9);
   strokeWeight(1);
-  cherryblossom(100, 100);
-  cherryblossom(300, 100);
-  cherryblossom(500, 100);
-  cherryblossom(700, 100);
+  cherryblossom(0, 0);
+  cherryblossom(150, 0);
+  cherryblossom(50, 100);
+  cherryblossom(250, 110);
+  cherryblossom(0, 200);
+  cherryblossom(250, 230);
+  
+  flower();
 }
 
 void cherryblossom(float x, float y) {
@@ -72,11 +81,10 @@ void cherryblossom(float x, float y) {
   popMatrix();
 }
 
-void skyscraper (float x, float y, float s) {
+void skyscraper (float x, float y) {
   pushMatrix();
-  scale(s);
-  
-  translate(x, y);  
+  translate(x, y);
+  //scale(s); 
   building(0, 0);
   door(85, 330);
   
@@ -133,7 +141,9 @@ void door (float x, float y) {
   circle(x + 55, y + 45, 10);
 }
 
-void bunny () {
-  ellipse(100, 600, 50, 20);
+void flower () {
+  fill(green);
+  rect(50, 600, 5, 50);
+  ellipse(50, 600, 30, 30);
   
 }
