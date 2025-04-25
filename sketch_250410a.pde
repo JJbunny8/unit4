@@ -23,53 +23,53 @@ void setup() {
   stroke(green);
   fill(green);
   ellipse(-50, 500, 1200, 600);
-  
+
   int y = 0;
 
-while(y <= 300) {
-  float percent = map(y, 0, 400, 0, 1);
-  color current = lerpColor(skyblue, white, percent);
-  stroke(current);
-  line(0, y, 800, y); 
-  y = y + 1;
-}
-pushMatrix();
+  while (y <= 300) {
+    float percent = map(y, 0, 400, 0, 1);
+    color current = lerpColor(skyblue, white, percent);
+    stroke(current);
+    line(0, y, 800, y);
+    y = y + 1;
+  }
+  pushMatrix();
 
-int xs, ys;
+  int xs, ys;
   xs = 350;
   ys = 70;
-  
+
   float s;
   s = 0.65;
   scale(s);
- 
-  while(ys < 300) {
+
+  while (ys < 300) {
     skyscraper(xs, ys);
     xs = xs + 300;
     if (xs >= 1000) {
-       s = 0.55;
-       xs = 550;
-       ys = ys + 150;
+      s = 0.55;
+      xs = 550;
+      ys = ys + 150;
     }
-}
+  }
 
-popMatrix();
+  popMatrix();
   scale(0.9);
   strokeWeight(1);
-  cherryblossom(0, 0);
-  cherryblossom(150, 0);
-  cherryblossom(50, 100);
-  cherryblossom(250, 110);
-  cherryblossom(0, 200);
-  cherryblossom(250, 230);
-  
-  flower();
+  //cherryblossom(0, 0);
+  //cherryblossom(150, 0);
+  //cherryblossom(50, 100);
+  //cherryblossom(250, 110);
+  //cherryblossom(0, 200);
+  //cherryblossom(250, 230);
+
+  butterfly(-200, 200);
 }
 
 void cherryblossom(float x, float y) {
   pushMatrix();
-  
-  translate(x, y);  
+
+  translate(x, y);
   trunk();
   blossom(60, 280);
   blossom(70, 250);
@@ -77,17 +77,17 @@ void cherryblossom(float x, float y) {
   blossom(150, 250);
   blossom(160, 280);
   blossom(110, 290);
-  
+
   popMatrix();
 }
 
 void skyscraper (float x, float y) {
   pushMatrix();
   translate(x, y);
-  //scale(s); 
+  //scale(s);
   building(0, 0);
   door(85, 330);
-  
+
   popMatrix();
 }
 
@@ -121,14 +121,14 @@ void building (float x, float y) {
   fill(blue);
   stroke(darkblue);
   rect(x, y, 250, 400);
-  while(y1 < 350) {
-  fill(teal);
-  rect(x1, y1, 30, 30); 
-  line(x1 + 5, y1 + 15, x1 + 15, y1 +5);
-  line(x1 + 10, y1 + 25, x1 + 25, y1 +10);
-  x1 = x1 + 40;
-    if(x1 > 210) {
-     x1 = 10; 
+  while (y1 < 350) {
+    fill(teal);
+    rect(x1, y1, 30, 30);
+    line(x1 + 5, y1 + 15, x1 + 15, y1 +5);
+    line(x1 + 10, y1 + 25, x1 + 25, y1 +10);
+    x1 = x1 + 40;
+    if (x1 > 210) {
+      x1 = 10;
       y1 = y1 + 47;
     }
   }
@@ -141,9 +141,54 @@ void door (float x, float y) {
   circle(x + 55, y + 45, 10);
 }
 
-void flower () {
-  fill(green);
-  rect(50, 600, 5, 50);
-  ellipse(50, 600, 30, 30);
-  
+void butterfly (float x, float y) {
+
+  pushMatrix();
+  translate(x, y);
+
+  body ();
+  wings();
+
+  popMatrix();
 }
+
+void body () {
+  stroke(0);
+  fill(pink);
+
+  pushMatrix();
+  translate(500, 200);
+  line(-130, 0, -115, 25);
+  //line(-135, 0, -120, 25);
+  rotate(PI/4);
+  ellipse(-40, 100, 60, 6);
+  popMatrix();
+}
+
+void wings () {
+  pushMatrix();
+  translate(500, 200);
+  int n = 30;
+  rotate(radians(80));
+  while (n > 0) {
+    ellipse(0, 100, n+10, n);
+    n = n - 10;
+  }
+  popMatrix();
+
+  translate(500, 200);
+  while (n > 0) {
+    ellipse(-70, 40, n+20, n);
+    n = n - 20;
+  }
+}
+
+
+
+
+// while (n > 0) {
+//rotate(PI);
+//ellipse(100, 100, n+10, n);
+// ellipse(130, 120, n+20, n);
+//n = n - 10;
+//}
