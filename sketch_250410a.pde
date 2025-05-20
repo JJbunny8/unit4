@@ -15,6 +15,7 @@ color lightblue = #EFF3FA;
 color darkblue =  #023e8a;
 color white =     #ffffff;
 color green =     #B6FFC1;
+color purple =    #cfbaf0;
 
 
 void setup() {
@@ -63,7 +64,7 @@ void setup() {
   //cherryblossom(0, 200);
   //cherryblossom(250, 230);
 
-  butterfly(-200, 200);
+  butterfly(200, 200);
 }
 
 void cherryblossom(float x, float y) {
@@ -142,53 +143,29 @@ void door (float x, float y) {
 }
 
 void butterfly (float x, float y) {
-
-  pushMatrix();
-  translate(x, y);
-
-  body ();
+  stroke(0);
   wings();
-
-  popMatrix();
+  body();
 }
 
 void body () {
-  stroke(0);
-  fill(pink);
-
-  pushMatrix();
-  translate(500, 200);
-  line(-130, 0, -115, 25);
-  //line(-135, 0, -120, 25);
-  rotate(PI/4);
-  ellipse(-40, 100, 60, 6);
-  popMatrix();
+  fill(brown);
+  line(100, 100, 80, 45);
+  line(82, 100, 102, 45);
+  ellipse(91, 99, 8, 70);
 }
 
 void wings () {
-  pushMatrix();
-  translate(500, 200);
-  int n = 30;
-  rotate(radians(80));
+  fill(purple);
+  ellipse(79, 115, 40, 35);
+  ellipse(108, 115, 40, 35);
+  
+  int n = 40;
+
   while (n > 0) {
-    ellipse(0, 100, n+10, n);
+    fill(random(0, 255) );
+    ellipse(77, 90, n + 5, n);
+    ellipse(110, 90, n + 5, n);
     n = n - 10;
   }
-  popMatrix();
-
-  translate(500, 200);
-  while (n > 0) {
-    ellipse(-70, 40, n+20, n);
-    n = n - 20;
-  }
 }
-
-
-
-
-// while (n > 0) {
-//rotate(PI);
-//ellipse(100, 100, n+10, n);
-// ellipse(130, 120, n+20, n);
-//n = n - 10;
-//}
