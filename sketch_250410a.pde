@@ -15,16 +15,20 @@ color lightblue = #EFF3FA;
 color darkblue =  #023e8a;
 color white =     #ffffff;
 color green =     #B6FFC1;
+color yellow =    #ffffb7;
 color purple =    #cfbaf0;
 
 
 void setup() {
   size(800, 600);
   background(100);
+  
+  //ground
   stroke(green);
   fill(green);
   ellipse(-50, 500, 1200, 600);
 
+  //sky
   int y = 0;
 
   while (y <= 300) {
@@ -33,7 +37,17 @@ void setup() {
     stroke(current);
     line(0, y, 800, y);
     y = y + 1;
+    
+    //sun
+    stroke(yellow);
+    line(110, 30, 160, 50);
+    line(70, 90, 100, 120);
+    line(10, 120, 20, 160);
+    fill(yellow);
+    circle(0, 0, 200);
   }
+  
+  //building placement
   pushMatrix();
 
   int xs, ys;
@@ -55,16 +69,33 @@ void setup() {
   }
 
   popMatrix();
+  
+  
+  //cherryblossom placement
+  pushMatrix();
+  
   scale(0.9);
   strokeWeight(1);
-  //cherryblossom(0, 0);
-  //cherryblossom(150, 0);
-  //cherryblossom(50, 100);
-  //cherryblossom(250, 110);
-  //cherryblossom(0, 200);
-  //cherryblossom(250, 230);
-
+  cherryblossom(0, 0);
+  cherryblossom(150, 0);
+  cherryblossom(50, 100);
+  cherryblossom(250, 110);
+  cherryblossom(0, 200);
+  cherryblossom(250, 230);
+  
+  popMatrix();
+  
+  //butteryfly placement
+  pushMatrix();
+  
+  scale(0.55);
   butterfly(200, 200);
+  butterfly(1200, 850);
+  butterfly(300, 750);
+  butterfly(700, 400);
+  butterfly(900, 0);
+  
+  popMatrix();
 }
 
 void cherryblossom(float x, float y) {
@@ -84,11 +115,22 @@ void cherryblossom(float x, float y) {
 
 void skyscraper (float x, float y) {
   pushMatrix();
+  
   translate(x, y);
-  //scale(s);
   building(0, 0);
   door(85, 330);
 
+  popMatrix();
+}
+
+void butterfly (float x, float y) {
+  pushMatrix();
+  
+  stroke(0);
+  translate(x, y);
+  wings();
+  body();
+  
   popMatrix();
 }
 
@@ -98,7 +140,7 @@ void trunk() {
   triangle(110, 340, 60, 290, 100, 310);
   triangle(100, 310, 110, 260, 120, 310);
   triangle(120, 330, 155, 290, 120, 310);
-  rect(100, 310, 20, 65);
+  rect(100, 310, 20, random(40, 90));
 }
 
 void blossom(float x, float y) {
@@ -114,7 +156,6 @@ void blossom(float x, float y) {
   circle(x-15, y+35, 10);
   circle(x+15, y+35, 12);
 }
-
 
 void building (float x, float y) {
   int x1 = 10;
@@ -138,14 +179,9 @@ void building (float x, float y) {
 void door (float x, float y) {
   rect(x, y, 40, 70);
   rect(x + 40, y, 40, 70);
+  fill(random(0, 255), random(0, 255), random(0, 255));
   circle(x + 25, y + 45, 10);
   circle(x + 55, y + 45, 10);
-}
-
-void butterfly (float x, float y) {
-  stroke(0);
-  wings();
-  body();
 }
 
 void body () {
